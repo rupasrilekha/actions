@@ -13,13 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          # Full git history is needed to get a proper list of changed files within super-linter
-          fetch-depth: 0
+          fetch-depth: 0  # Full history required for Super Linter
 
       - name: Lint Code Base
         uses: github/super-linter@v4
         env:
-          VALIDATE_ALL_CODEBASE: false
-          VALIDATE_CPP: true            # ✅ Enable C++ linting
+          VALIDATE_ALL_CODEBASE: true   # ✅ Lint the entire codebase
           DEFAULT_BRANCH: "main"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
