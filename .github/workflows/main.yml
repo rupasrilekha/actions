@@ -8,16 +8,18 @@ on:
 
 jobs:
   run-lint:
+    name: Run Super Linter
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 
+          fetch-depth: 0  # Ensures all history is fetched for accurate linting
 
       - name: Lint Code Base
-        uses: github/super-linter@v4
+        uses: github/super-linter/slim@v4  # Use slim version for faster runs (optional)
         env:
-          VALIDATE_ALL_CODEBASE: true 
-          DEFAULT_BRANCH: "main"
+          VALIDATE_ALL_CODEBASE: true
+          DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
