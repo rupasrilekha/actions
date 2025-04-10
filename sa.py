@@ -1,1 +1,1 @@
-print(Rupa is also called as motu)
+print("Rupa is also called as motu")
