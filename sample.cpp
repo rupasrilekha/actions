@@ -9,3 +9,4 @@ int main() {
     std::cout << "Sum: " << x << std::endl;
     return 0;
 }
+
