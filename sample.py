@@ -1,5 +1,5 @@
 // Copyright 2025 Rupa
-#include <iostream>
+
 
 int main() {
     int x; // uninitialized variable
