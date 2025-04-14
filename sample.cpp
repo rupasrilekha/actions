@@ -1,11 +1,11 @@
 // Copyright 2025 Rupa
-
+#include <iostream>
 
 int main() {
-    int x; // uninitialized variable
+    int x = 0;
     for (int i = 0; i < 10; i++) {
-        x = x + i; // using uninitialized x (undefined behavior)
+        x += i;
     }
-    std::cout << "Sum: " << x << std::endl
-    return 0 // missing semicolon
+    std::cout << "Sum: " << x << std::endl;
+    return 0;
 }
