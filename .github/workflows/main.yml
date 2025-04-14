@@ -1,61 +1,25 @@
-# name: Lint Code Base
-
-# on:
-#   push:
-#     branches: [ "main" ]
-#   pull_request:
-#     branches: [ "main" ]
-
-# jobs:
-#   run-lint:
-#     name: Run Super Linter
-#     runs-on: ubuntu-latest
-
-
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v4
-#         with:
-#           fetch-depth: 0  # Ensures all history is fetched for accurate linting
-
-#       - name: Lint Code Base
-#         uses: github/super-linter/slim@v4  # Use slim version for faster runs (optional)
-#         env:
-#           VALIDATE_ALL_CODEBASE: true
-#           DEFAULT_BRANCH: main
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
----
-
 name: Lint Code Base
 
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
   pull_request:
-    branches: ["main"]
+    branches: [ "main" ]
 
 jobs:
   run-lint:
-    name: Run Super Linter
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Ensures all history is fetched for accurate linting
-          
-     
+          # Full git history is needed to get a proper list of changed files within super-linter
+          fetch-depth: 0
 
       - name: Lint Code Base
-        uses: github/super-linter@v4  
-
-      - name: Markdown Table of Contents Generator
-        uses: Sceleratis/markdown-table-of-contents-generator-action@v1.0.4
+        uses: github/super-linter@v4
         env:
-          VALIDATE_ALL_CODEBASE: true
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\
-
-          
+          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_CPP: true              # ✅ Enable C++ linting
+          DEFAULT_BRANCH: "main"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
